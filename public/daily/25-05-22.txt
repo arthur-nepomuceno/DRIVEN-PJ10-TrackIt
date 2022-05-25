@@ -1,0 +1,71 @@
+25/05/2022 - Quarta-feira
+INÍCIO: 10:13
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+QQQ
+01. Concluir o exercício de Token -OK
+    - o Token é um identificador único e temporário
+    - ele vem de retorno a um GET ou um POST feito para uma API
+    - de modo geral, o Token é sempre enviado dentro de um objeto, nesse formato
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+02. Concluir os exercícios de ContextAPI -OK
+    - o "Context" é um "espaço", uma região criada dentro das tags 
+    <Context.Provider value={element, setElement}></Context.Provider>.
+    - todos os componentes que estiverem nessa região tem acesso a tudo
+    que estiver dentro de "value"
+    - para acessar, é preciso usar o Hooks "useContext"
+        import {useContext} from "react"
+    - e também preciso importar o "contexto" que guarda as variáveis
+        import Context from "./Context"
+    - dai é só fazer uma desestruturação, já na função do componente,
+    para acessar o "element"
+        const {element, setElement} = useContext(Context);
+    - desse ponto em diante, "element" e "setElement" passam a estar acessíveis
+    dentro do componente como se tivessem sido declarados ali mesmo
+
+    ADEUS props drilling!
+
+PAUSA AQUI: 12:19
+TOTAL: 2:06
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO: 14:20
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+QQQ 
+01. Layout cru da tela de login e da tela de cadastro -OK
+    -criar componentes: Login.js e SignUp.js -ok
+    -importar em App.js -ok
+    -importar react-router-dom -ok
+    -estabelecer rotas -ok
+    -fazer o layout só com -ok
+        campos de input
+        botão
+        opção de ir pra tela de cadastro e vice-versa
+
+02. Conectar uma tela com a outra pelo "Link to" -OK
+
+03. Regularizar as requisições para as respectivas APIs (salvando o token - ContextAPI)
+    -o que eu preciso para pode enviar as informações para a API?
+        1.  SALVAR AS INFORMAÇÕES dos inputs -ok
+            -variável de estado + input controlado -ok
+
+        2. ORGANIZAR O ENVIO -OK
+            -montar o objeto que vai junto com a requisição -ok
+            -importar o axios -ok
+            -importar useNavigate para redirecionar o usuário em caso de sucesso -ok
+            -criar uma função de envio que vai ficar no onSubmit do form -ok
+            -LEMBRAR DO event.preventDefault() na função de enviodo formulário -ok
+
+PAUSA AQUI: 17:03
+TOTAL: 2:43
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO: 17:43
+
+QQQ
+04. Finalizar o layout
