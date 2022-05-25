@@ -9,6 +9,7 @@ export default function Login(){
 
     const [email, setEmail] = useState("joao44@gmail.com");
     const [password, setPassword] = useState("legal ");
+    
     const [user, setUser] = useState(null);
 
     const body = {
