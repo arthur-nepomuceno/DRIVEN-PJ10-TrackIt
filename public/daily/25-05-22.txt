@@ -76,9 +76,9 @@ TOTAL: 1:17
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 RETORNO: 23:43
 QQQ
-05. Implementar funcionalidades de carregamentos
-    - trabalhar detro das branches
-    - como fazer? ideia: estabelecer uma variável de controle
-        - quando ela for true, a opagina estará carregando e renderizará
-        o componente equivalente para isso
-        - quando ela for false, a página renderizará o componente normal
+05. Implementar funcionalidades de carregamentos -ok
+    - trabalhar detro das branches -ok
+    - como fazer? ideia: estabelecer uma variável de controle -ok
+        - quando ela for true, a opagina estará carregando e renderizará -ok
+        o componente equivalente para isso -ok
+        - quando ela for false, a página renderizará o componente normal -ok

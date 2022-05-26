@@ -42,9 +42,8 @@ export default function SignUp(){
     }
 
     return(
-        <Container background={nowLoading ? `#D4D4D4` : `#FFFFF`} 
-                   color={nowLoading ? `#AFAFAF` : `#000000`} >     
-            <img src={trackit}/>
+        <Container background={nowLoading ? `#D4D4D4` : `#FFFFF`} color={nowLoading ? `#AFAFAF` : `#000000`} >     
+            <img src={trackit} alt="TrackIt"/>
             <form onSubmit={Send}>
                 <input type="email" 
                        placeholder="email" 
@@ -85,7 +84,6 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
 
-
     img {
         width: 180px;
         height: 180px;
@@ -115,7 +113,7 @@ const Container = styled.div`
         font-weight: 400;
         font-size: 20px;
         line-height: 25px;
-        color: ${props => props.color}
+        color: ${props => props.color};
     }  
 
     input::placeholder {

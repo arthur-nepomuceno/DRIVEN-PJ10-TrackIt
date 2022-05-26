@@ -7,11 +7,11 @@ import trackit from "../img/trackIt-login-signup.png";
 
 export default function Login(){
 
-    const [email, setEmail] = useState("joao44@gmail.com");
-    const [password, setPassword] = useState("legal ");
-    
+    const [email, setEmail] = useState("joaao44@gmail.com");
+    const [password, setPassword] = useState("legal ");    
     const [user, setUser] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [nowLoading, setNowLoading] = useState(false);
+
 
     const body = {
         email,
@@ -21,7 +21,7 @@ export default function Login(){
     const navigate = useNavigate();
 
     function Send(event){
-        setIsLoading(true);
+        setNowLoading(true);
         
         event.preventDefault();
 
@@ -29,9 +29,13 @@ export default function Login(){
         promise.then(response => {
             const data = response.data;
             setUser({...data});
-            navigate("/hoje")
+            navigate("/hoje");
+            setNowLoading(false);
         });
-        promise.catch((error) => {Error(error.response.data.message)}); 
+        promise.catch((error) => {
+            Error(error.response.data.message);
+            setNowLoading(false);
+        }); 
     }
 
     function Error(e){
@@ -40,12 +44,21 @@ export default function Login(){
 
 
     return(
-        <Container>
+        <Container background={nowLoading ? `#D4D4D4` : `#FFFFF`} color={nowLoading ? `#AFAFAF` : `#000000`}>
             <img src={trackit} alt="TrackIt"/>
             <form onSubmit={Send}>
-                <input type="email" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
-                <input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-                <button type="submit">Entrar</button>
+                <input type="email" 
+                       placeholder="email" 
+                       value={email} 
+                       onChange={(e) => setEmail(e.target.value)} 
+                       required/>
+                <input type="password" 
+                       placeholder="senha" 
+                       value={password} 
+                       onChange={(e) => setPassword(e.target.value)} 
+                       required/>
+                {nowLoading ? <div><ThreeDots color="#FFFFFF" height={50} width={50} /></div> 
+                            : <button type="submit">Entrar</button>}
                 <Link to="/cadastro" style={{textDecoration: "none"}}>
                     <p>Não tem uma conta? Cadastre-se!</p>
                 </Link>
@@ -82,7 +95,7 @@ const Container = styled.div`
         margin: 3px 0px 3px 0px;
         padding: 10px;
 
-        background: #FFFFFF;
+        background: ${props => props.background};
         border: 1px solid #D5D5D5;
         border-radius: 5px;
         outline: none;
@@ -91,7 +104,8 @@ const Container = styled.div`
         font-style: normal;
         font-weight: 400;
         font-size: 19.976px;
-        line-height: 25px; 
+        line-height: 25px;
+        color: ${props => props.color};
     }
 
     input::placeholder {
@@ -121,6 +135,18 @@ const Container = styled.div`
 
     button:hover {
         cursor: pointer;
+    }
+
+    div {
+        width: 303px;
+        height: 45px;
+        background: #87cbfa;
+        border-radius: 5px;
+        border-style: none;
+        margin: 3px 0px 3px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     p {
