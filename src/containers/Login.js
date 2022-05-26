@@ -7,12 +7,10 @@ import axios from "axios";
 import trackit from "../img/trackIt-login-signup.png";
 
 export default function Login(){
-
-    const {setUser} = useContext(UserContext);
-    const [email, setEmail] = useState("joao44@gmail.com");
-    const [password, setPassword] = useState("legal ");    
-    const [nowLoading, setNowLoading] = useState(false);
-
+    const {setUser} = useContext(UserContext);      
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [nowLoading, setNowLoading] = useState(false); 
 
     const body = {
         email,
@@ -33,16 +31,8 @@ export default function Login(){
             navigate("/hoje");
             setNowLoading(false);
         });
-        promise.catch((error) => {
-            Error(error.response.data.message);
-            setNowLoading(false);
-        }); 
-    }
-
-    function Error(e){
-        alert(e);
-    }
-
+        promise.catch((error) => {alert(error.response.data.message)}); 
+    };
 
     return(
         <Container background={nowLoading ? `#D4D4D4` : `#FFFFF`} color={nowLoading ? `#AFAFAF` : `#000000`}>
