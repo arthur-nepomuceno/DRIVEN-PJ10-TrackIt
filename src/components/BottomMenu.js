@@ -2,21 +2,43 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {CircularProgressbar} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
+import { useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 export default function BottomMenu(){
+    const {progress} = useContext(UserContext);
+
     return(
         <Container>
-            <ul>
-                <Link to="/habitos" style={{textDecoration:"none"}}>
-                    <li>Hábitos</li>
-                </Link>
-                <Link to="/hoje" style={{textDecoration:"none"}}>
-                    <li><div><CircularProgressbar text={`Hoje`}/></div></li>
-                </Link>
-                <Link to="/historico" style={{textDecoration:"none"}}>
-                    <li>Histórico</li>
-                </Link>
-            </ul>
+            <Link to="/habitos" style={{textDecoration:"none"}}>
+                <div>Hábitos</div>
+            </Link>
+            <Link to="/hoje" style={{textDecoration:"none"}}>
+                 <div style={{width: 90, height: 130}}>
+                     <CircularProgressbar value={progress}
+                                          text={`Hoje`}
+                                          background={true}
+                                          backgroundPadding={6}
+                                          strokeWidth={8}
+                                          styles={{
+                                              background: {
+                                                  fill: `#52B6FF`,
+                                              },
+                                              text: {
+                                                  fill: `#FFFFFF`,
+                                              },
+                                              path: {
+                                                  stroke: `#FFFFFF`,
+                                              },
+                                              trail: {
+                                                  stroke: `#52B6FF`,
+                                              },
+                                          }}/>
+                </div>
+            </Link>
+            <Link to="/historico" style={{textDecoration:"none"}}>
+                <div>Histórico</div>
+            </Link>
         </Container>
     );
 }
@@ -27,26 +49,17 @@ const Container = styled.div`
     background: #FFFFFF;
     position: fixed;
     bottom: 0;
+    display: flex;   
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 30px 24px 30px;
 
-    border: 1px dashed black;
-
-    ul {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    li {
+    div {
         font-family: 'Lexend Deca';
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 22px;
         color: #52B6FF;
-    }
-
-    li div{
-        width: 91px;
-        height: 91px;
     }
 `

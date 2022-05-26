@@ -14,11 +14,12 @@ import UserContext from "../contexts/UserContext";
 
 export default function App(){
     const [user, setUser] = useState(null);
-    const userData = {user, setUser}
+    const [progress, setProgress] = useState(70);
+    const contextData = {user, setUser, progress, setProgress};
 
     return(
         <BrowserRouter>
-            <UserContext.Provider value={userData}>
+            <UserContext.Provider value={contextData}>
                 <Routes>
                         <Route path="/" element={<Login/>}/>
                         <Route path="/cadastro" element={<SignUp/>}/>

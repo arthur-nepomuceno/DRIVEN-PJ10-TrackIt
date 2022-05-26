@@ -4,7 +4,6 @@ import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 
 export default function Top(){
-
     const {user} = useContext(UserContext);
     /*const {image} = user;*/
 
