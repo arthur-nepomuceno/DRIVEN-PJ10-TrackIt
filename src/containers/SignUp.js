@@ -7,10 +7,10 @@ import trackit from "../img/trackIt-login-signup.png";
 
 export default function SignUp(){
 
-    const [email, setEmail] = useState("joao41@gmail.com");
-    const [password, setPassword] = useState("legal ");
-    const [name, setName] = useState("Joao");
-    const [image, setImage] = useState("https://http.cat/411.jpg");
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [name, setName] = useState(null);
+    const [image, setImage] = useState(null);
     const [nowLoading, setNowLoading] = useState(false);
 
     const body = {
@@ -32,13 +32,9 @@ export default function SignUp(){
             setNowLoading(false);
         });
         promise.catch((error) => {
-            Error(error.response.data.message);
+            alert(error.response.data.message);
             setNowLoading(false);
         });
-    }
-
-    function Error(e){
-        alert(e);
     }
 
     return(
