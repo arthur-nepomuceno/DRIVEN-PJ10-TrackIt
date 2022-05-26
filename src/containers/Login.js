@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import {ThreeDots} from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import UserContext from "../contexts/UserContext";
 import axios from "axios";
 import trackit from "../img/trackIt-login-signup.png";
 
 export default function Login(){
 
-    const [email, setEmail] = useState("joaao44@gmail.com");
+    const {setUser} = useContext(UserContext);
+    const [email, setEmail] = useState("joao44@gmail.com");
     const [password, setPassword] = useState("legal ");    
-    const [user, setUser] = useState(null);
     const [nowLoading, setNowLoading] = useState(false);
 
 
@@ -70,7 +71,7 @@ export default function Login(){
 
 const Container = styled.div`
     position: absolute;
-    top: 68px;
+    top: 75px;
     display: flex;
     flex-direction: column;
     align-items: center;

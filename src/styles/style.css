@@ -22,4 +22,6 @@ body{
     align-items: center;
     justify-content: center;
     position: relative;
+
+    border: 1px dashed black;
 }

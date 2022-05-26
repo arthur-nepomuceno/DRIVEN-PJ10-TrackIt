@@ -82,3 +82,9 @@ QQQ
         - quando ela for true, a opagina estará carregando e renderizará -ok
         o componente equivalente para isso -ok
         - quando ela for false, a página renderizará o componente normal -ok
+
+FIM DO DIA: 01:16
+TOTAL: 1:33
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL DO DIA - 7:39

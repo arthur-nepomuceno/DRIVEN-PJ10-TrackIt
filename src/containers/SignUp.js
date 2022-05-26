@@ -78,7 +78,7 @@ export default function SignUp(){
 
 const Container = styled.div`
     position: absolute;
-    top: 68px;
+    top: 75px;
     display: flex;
     flex-direction: column;
     align-items: center;

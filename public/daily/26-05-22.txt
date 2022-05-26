@@ -1,0 +1,74 @@
+26/05/22 - Quinta-feira.
+
+INÍCIO: 13:51
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sobre Local Storage
+
+- O Local Storage existe porque ele resolve um problema. Foi para iso que ele foi
+inventad0, para resolver um problema. QUe problema que ele resolve?
+
+    O problema do que acontece quando os dados de um usuário ficam armazenados
+    dentro do código JavaScript. O problema é que sempre que o reinicia, os dados
+    se perdem.
+
+    Como o Local Storage resolve esse problema?
+    Armazenando os dados na máquina do usuário.
+    "Local" = Local.
+    "Storage" = Armazenamento.
+    "Local Storage" = Armazenamento Local.
+
+    De onde vem o Local Storage?
+    Do navegador.
+    O navegador se conecta com a máquina. Cria o Local Storage.
+    E então deixa esses dados acessíveis para o JavaScript.
+
+    E como o JavaScript acessa esses dados? Por um variável chamada
+    "localStorage".
+
+    Algumas funcionalidades importantes:
+
+    localStorage.setItem(`nome`, `Arthur`) isso vira {nome: `Arthur`}
+    localStorage.getItem (`nome`) devolve o valor `Arthur`
+    localStorage.removeItem(`nome`) apaga `Arthur` do Loal Storage
+
+    DETALHE SOBRE Local Storage: SÓ ACEITA STRINGS
+    ENtão antes de fazer um registro tem que passar a informação
+    para string caso ela não seja dese tipo.
+    Como?
+
+    const infoString = JSON.stringify(informacao)
+    localStorage.setItem(`chave`, `infoString`)
+
+    Para pegar de volta
+
+    const infoString = localStorage.getItem(`chave`)
+    const informacao = JSOn.parse(infoString)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+QQQ
+01. Quero que a imagem de perfil do usuário apareca no topo da tela
+    -então preciso que essa informação esteja disponível para componentes
+    diferentes, logo: contextAPI.
+    
+    -criar context -OK
+        -importar createContext do react
+        -criar o context com o nome que eu quiser usando o createContext()
+        -exportar esse context como padrão do arquivo: export default "NomeContext"
+    -importar esse context em App.js  -OK
+    -passar a variável de estado para App.js -OK 
+    -passar o context para a renderização -OK
+    -passar a variável de estado como valor para ser compartilhado -OK
+    -receber essa variável no componente onde ela vai ser utilizado -OK
+        -importar o Context -ok
+        -importar useContext do react -ok
+        -usar desestruturação com o useContext aplicado em Context para -ok
+        receber as informações passadas
+    
+02. Quero que o menu esteja na tela.
+    -criar um componente para o menu
+    -importar o styled do styled components
+
+PAUSA AQUI - 15:51
+TOTAL - 2:00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO - 
+    -desenhar o menu conforme o layout
