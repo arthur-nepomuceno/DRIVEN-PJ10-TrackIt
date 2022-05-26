@@ -68,4 +68,17 @@ TOTAL: 2:43
 RETORNO: 17:43
 
 QQQ
-04. Finalizar o layout
+04. Finalizar o layout básico -OK
+
+PAUSA AQUI: 19:00
+TOTAL: 1:17
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO: 23:43
+QQQ
+05. Implementar funcionalidades de carregamentos
+    - trabalhar detro das branches
+    - como fazer? ideia: estabelecer uma variável de controle
+        - quando ela for true, a opagina estará carregando e renderizará
+        o componente equivalente para isso
+        - quando ela for false, a página renderizará o componente normal
