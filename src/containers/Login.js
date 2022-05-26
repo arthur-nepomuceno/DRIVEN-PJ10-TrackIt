@@ -7,8 +7,8 @@ import trackit from "../img/trackIt-login-signup.png";
 
 export default function Login(){
 
-    const [email, setEmail] = useState("joao44@gmail.com");
-    const [password, setPassword] = useState("legal ");
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
     
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -31,13 +31,8 @@ export default function Login(){
             setUser({...data});
             navigate("/hoje")
         });
-        promise.catch((error) => {Error(error.response.data.message)}); 
-    }
-
-    function Error(e){
-        alert(e);
-    }
-
+        promise.catch((error) => {alert(error.response.data.message)}); 
+    };
 
     return(
         <Container>
