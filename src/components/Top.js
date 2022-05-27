@@ -9,7 +9,7 @@ export default function Top(){
     return(
         <Container>
             <img src={trackit} alt="trackit"/>
-            <img src={"https://http.cat/411.jpg"} alt="profile"/>
+            <img src={user.image} alt="profile"/>
         </Container>
     );
 }
@@ -24,6 +24,7 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 1;
 
     img {
         margin: 0px 18px 0px 18px;
