@@ -53,7 +53,8 @@ const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 24px 30px 24px 30px;
-
+    z-index: 1;
+    
     div {
         font-family: 'Lexend Deca';
         font-style: normal;

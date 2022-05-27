@@ -77,8 +77,34 @@ RETORNO - 17:29
 
 PAUSA AQUI - 19:04
 TOTAL - 1:35
+
 FIM DE "TOP E MENU"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-RETORNO - - TELA DE HISTÓRICO
+RETORNO - 23:06 - TELA DE HISTÓRICO
+QQQ
+01. Fazer conforme layout - OK
 
+23:35 - PERSISTÊNCIA DE LOGIN
+QQQ
+01. Salvar o login e a senha do usuário no local storage da máquina. -OK
+    -a função que envia os dados para a API também vai ser a função que
+    guarda os dados no Local Storage -ok
 
+02. Quando o aplicativo abrir, verificar se existe um usuário local registrado. -OK
+
+03. Se houver, preencher os dados automaticamente e redirecionar para a tela inicial. -OK
+
+    -DESAFIO:
+        - puxar e reenviar as informações do local storage do jeito createContext
+        - tem que haver coerência entre o registro feito pela primeira vez
+        e o registro feito pelo preenchimento automatico
+        - a ideia é: mesmo com o preenchimento automatico e a persistência
+        de login, eu ainda preciso da promise, porque ainda preciso do token
+        - então o preenchimento automatico acontece e em seguida faço um novo
+        post com o axios
+
+FIM DA PERSISTÊNCIA DE LOGIN
+FIM DO DIA - 01:43
+TOTAL: 2:37
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL DO DIA - 6:12

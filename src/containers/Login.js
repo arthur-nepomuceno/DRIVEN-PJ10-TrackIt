@@ -1,37 +1,56 @@
 import styled from "styled-components";
 import {ThreeDots} from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
 import trackit from "../img/trackIt-login-signup.png";
 
 export default function Login(){
-    const {setUser} = useContext(UserContext);      
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [nowLoading, setNowLoading] = useState(false); 
-
-    const body = {
-        email,
-        password,
-    }
-
+    const API = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
     const navigate = useNavigate();
+    const {setUser} = useContext(UserContext);      
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [nowLoading, setNowLoading] = useState(false);
+    const serialData = localStorage.getItem(`data`);
+    const data = JSON.parse(serialData);
+
+    function AutoLogin(data){
+        if(data){
+            setNowLoading(true);
+            const body = {email: data.email, password: data.password};
+            const promise = axios.post(API, body);
+            promise.then(response => {
+                const info = response.data;
+                setUser({...info});
+                navigate("/hoje");
+                setNowLoading(false);
+            });
+            promise.catch((error) => {
+                alert(error.response.data.message);
+                setNowLoading(false);
+            });
+            }
+    }
+    useEffect(() => {AutoLogin(data)}, []);    
 
     function Send(event){
+        event.preventDefault(); 
         setNowLoading(true);
-        
-        event.preventDefault();
-
-        const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
+        const body = {email, password};
+        const promise = axios.post(API, body);
         promise.then(response => {
-            const data = response.data;
-            setUser({...data});
+            localStorage.setItem(`data`, JSON.stringify({email, password}));
+            const info = response.data;
+            setUser({...info});
             navigate("/hoje");
             setNowLoading(false);
         });
-        promise.catch((error) => {alert(error.response.data.message)}); 
+        promise.catch((error) => {
+            alert(error.response.data.message);
+            setNowLoading(false);
+        });
     };
 
     return(
@@ -40,12 +59,12 @@ export default function Login(){
             <form onSubmit={Send}>
                 <input type="email" 
                        placeholder="email" 
-                       value={email} 
+                       value={data? data.email : email} 
                        onChange={(e) => setEmail(e.target.value)} 
                        required/>
                 <input type="password" 
                        placeholder="senha" 
-                       value={password} 
+                       value={data? data.password : password} 
                        onChange={(e) => setPassword(e.target.value)} 
                        required/>
                 {nowLoading ? <div><ThreeDots color="#FFFFFF" height={50} width={50} /></div> 
