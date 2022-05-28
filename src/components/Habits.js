@@ -1,36 +1,49 @@
 import styled from "styled-components";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import Day from "./Day";
+import Habit from "./Habit";
+import UserContext from "../contexts/UserContext";
 
 export default function Habits(){
-    const [newHabit, setNewHabit] = useState(true);
-    const [sunday, setSunday] = useState(true);
-    const [monday, setMonday] = useState(false);
-    const [tuesday, setTuesday] = useState(false);
-    const [wednesday, setWednesday] = useState(false);
-    const [thursday, setThursday] = useState(false);
-    const [friday, setFriday] = useState(false);
-    const [saturday, setSaturday] = useState(false);
-    const weekDays = [{day: `D`, name: `sunday`},
-                      {day: `S`, name: `monday`},
-                      {day: `T`, name: `tuesday`},
-                      {day: `Q`, name: `wednesday`},
-                      {day: `Q`, name: `thursday`},
-                      {day: `S`, name: `friday`},
-                      {day: `S`, name: `saturday`}];
+    const API = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+    const {user, habits, setHabits} = useContext(UserContext)
+    const token = user.token
+    const config = {headers: {Authorization: `Bearer ${token}`}}
+    useEffect(() => {
+        const promise = axios.get(API, config);
+        promise.then((response) => {setHabits(response.data)});
+        promise.catch((error) => {alert(error.response.data.message)})
+        
+    }, []);
+
+    const [newHabit, setNewHabit] = useState(false);
+    const weekDays = [{day: `D`, number: 0},
+                      {day: `S`, number: 1},
+                      {day: `T`, number: 2},
+                      {day: `Q`, number: 3},
+                      {day: `Q`, number: 4},
+                      {day: `S`, number: 5},
+                      {day: `S`, number: 6}];
 
     function addHabit(){
         setNewHabit(true);
     }
 
+    const [habitName, setHabitName] = useState("");
+    const [habitDays, setHabitDays] = useState([]);
+    function save(){
+        const body = {name: habitName, days: habitDays}
+        const config = {headers: {Authorization: `Bearer ${token}`}}
+        const promise = axios.post(API, body, config);
+        promise.then(setHabitName(""));
+        promise.catch((error) => {alert(error.response.data.message)});
+        setNewHabit(false);
+    }
+
     function cancel(){
         setNewHabit(false);
     }
-
-    function save(){
-        setNewHabit(false);
-    }
-
-    function selectDay(){}
 
     return(
         <Container>
@@ -38,9 +51,18 @@ export default function Habits(){
             <div id="new-habit" onClick={addHabit}>+</div> 
             {newHabit?
                         <div id="add-habit">
-                            <input type="text" placeholder="nome do hábito"/>
+                            <input type="text" 
+                                   placeholder="nome do hábito"
+                                   value={habitName}
+                                   onChange={(e) => {setHabitName(e.target.value)}}
+                                   required/>
                             <div id="weekdays">
-                                {weekDays.map((day, index) => <P key={index}>{day.day}</P>)}
+                                {weekDays.map((day, index) => <Day key={index}
+                                                                   day={day.day}
+                                                                   name={day.name}
+                                                                   number={day.number}
+                                                                   habitDays={habitDays}
+                                                                   setHabitDays={setHabitDays}/>)}
                             </div>
                             <div id="options">
                                 <p id="cancel" onClick={cancel}>Cancelar</p>
@@ -48,8 +70,17 @@ export default function Habits(){
                             </div>
                         </div>
                         : ""}
-            <p id="message">Você não tem nenhum hábito cadastrado ainda. 
-                Adicione um hábito para começar a trackear!</p>
+            {habits.length === 0 ? 
+                                    <p id="message">
+                                        Você não tem nenhum hábito cadastrado ainda. 
+                                        Adicione um hábito para começar a trackear!
+                                    </p> 
+                                    : habits.map(
+                                        (habit, index) => <Habit key={index}
+                                                                 name={habit.name}
+                                                                 days={habit.days}
+                                                                 weekdays={weekDays}/>
+                                    )}
         </Container>
     );
 }
@@ -115,6 +146,8 @@ const Container = styled.div`
         border: 1px solid #D5D5D5;
         border-radius: 5px;
         padding: 10px;
+        font-size: 20px;
+        outline: none;
     }
 
     input::placeholder {
@@ -126,25 +159,6 @@ const Container = styled.div`
         width: fit-content;
         display: flex;
         margin-top: 8px;
-    }
-
-    div#weekdays p{
-        width: 30px;
-        height: 30px;
-        margin-right: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        border: 1px solid #D5D5D5;
-        border-radius: 5px;
-        font-size: 20px;
-        line-height: 25px;
-        
-
-        &:hover {
-            cursor: pointer;
-        }
     }
 
     div#options {
@@ -182,9 +196,4 @@ const Container = styled.div`
         }
     }
 
-`
-
-const P = styled.p`
-    background: ${props => props.background};
-    color: ${props => props.color};
 `

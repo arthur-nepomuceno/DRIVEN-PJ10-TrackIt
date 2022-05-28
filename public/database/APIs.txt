@@ -56,7 +56,7 @@ RECIEVE:
 GET - LISTAR HÁBITOS
 Link: https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits
 
-SEND: a "header" object with the TOKEN.
+SEND: a "headers" object with the TOKEN.
 
 RECIEVE:
 
