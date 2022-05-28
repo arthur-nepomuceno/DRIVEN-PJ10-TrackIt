@@ -1,6 +1,14 @@
 28/05/22 - Sábado
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-INÍCIO:
+INÍCIO: 17:49
+
+PROGRESSO:
+Consigo salvar hábitos do usuário
+Consigo mostrar esses hábitos na tela
+
+PROBLEMA:
+Fazer os hábitos recarregarem automaticamente depois de salvar
+Se cancelar, também persistir os dados dos dias escolhidos
 
 QQQ
