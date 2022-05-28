@@ -1,0 +1,30 @@
+27/05/22 - Sexta-feira.
+
+INÍCIO: 17:00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+QQQ - TELA DE HÁBITOS
+01. Criar layout básico. -OK
+
+02. Apresentar tela de criação de hábito ao clicar em "+". -OK
+    -criar o layout -ok
+    -condicionar a renderização do layout ao clique no "+" -ok
+        -estabelecer uma variável de controle -ok
+        -se ela for "false", nada de tela de criação -ok
+        -se ela for "true", a tela aparece -ok
+        -ao clicar no botão, mudo o valor de "false" para "true" -ok
+        -ao clicar em "Cancelar" ou "Salvar", mudo o valor de "true" para "false" -ok
+
+03. Criar função básica de seleção de dia.
+    -mudar a cor do dia conforme seleção/desseleção
+
+PAUSA AQUI - 19:47
+TOTAL - 2:47
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO - 
+CONTINUANDO...
+
+QQQ
+03. Criar função básica de seleção de dia.
+    -mudar a cor do dia conforme seleção/desseleção
+
