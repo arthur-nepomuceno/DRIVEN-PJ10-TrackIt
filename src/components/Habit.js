@@ -1,11 +1,26 @@
 import styled from "styled-components";
+import { useContext } from "react";
+import UserContext from "../contexts/UserContext";
 
 export default function Habit({id, name, weekdays, days}){
+    const {habits, setHabits} = useContext(UserContext);
+
+    function deleteHabit(){
+        if(confirm(`Deseja realmente apagar este hábito? ${name}`) === true){
+            const newList = habits.filter(habit => habit.id != id);
+            setHabits(newList);
+        }
+    };
 
     const list = [1, 3, 6];
     return(
         <Container>
-            <p>{name}</p>
+            <p>
+                {name}
+                <div onClick={deleteHabit}>
+                    <ion-icon name="trash-bin-outline" ></ion-icon>
+                </div>
+            </p>
             <div id="weekdays">
                 {weekdays.map((day, index) => <div key={index} 
                                                    id="day"
@@ -31,6 +46,12 @@ const Container = styled.div`
         font-weight: 400;
         font-size: 20px;
         color: #666666;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    ion-icon:hover {
+        cursor: pointer;
     }
 
     div#weekdays {

@@ -12,3 +12,49 @@ Fazer os hábitos recarregarem automaticamente depois de salvar
 Se cancelar, também persistir os dados dos dias escolhidos
 
 QQQ
+05. Atualizar a variável com a lista de hábitos depois de salvar -OK
+    -quando eu salvo um hábito, a API me retorna um objeto que contem
+    as informações sobre o hábito salvo
+    -basta atualizar a lista de hábitos com essa informação caso a resposta
+    da API seja positiva
+
+06. Ao cancelar um hábito, persistir os dias escolhidos. -OK
+    Por que eles estão sumindo agora?
+    Porque a renderização dos dias da semana na opção de adicionar acontece
+    a cada vez que o botão de adicionar é clicado e, por definição, eles
+    são sempre carregados todos desselecionados.
+
+    Então o que eu preciso é salvar essas informações em algum lugar e só limpar
+    a lista se o botão de "salvar" for clicado.
+
+    Até agora as informações dos dias selecionados já são salvas dentro de 
+    "habitsDays".
+
+    IDEIA:
+    Ao carregar cada Day.js na renderização, verificar se esse dia já faz parte
+    da lista de dias selecionados. Se sim, passar a variável "click" para "true",
+    fazendo com que o dia em questão assuma as propriedades de um dia selecionado.
+
+    Se vou mudar uma variável de estado durante a renderização do componente, vou
+    precisar do useEffect. Por que? Porque quando uma variável de estado é alterada
+    na renderização do componente, isso invoca a renderização do componente de novo.
+    Sem o useEffect eu criaria um loopig infinito que travari o código.
+
+07. Não devo ser capaz de criar hábitos com dias vazios. -OK
+
+08. Deletar um hábito.
+    IDEIA:
+    - cada hábito tem um "id"
+    - quando eu clicar no hábito, posso passar o "id" dele como parâmetro
+    - minha função de deletar então vai pegar esse id e usar ele para
+    atualizar a lista de hábitos
+    - a sacada é filtrar a lista, deixando passar apenas os id's que forem
+    diferentes do id que eu quero apagar.
+
+    PLANO:
+    - importar o useContext -ok 
+    - importar o UserContext -ok 
+    - usar o useContext para pegar a lista de hábitos e a função que atualiza a lista -ok
+    
+    - Dar o display do confirm para confirma deleção
+        - instalar a lib "react-confirm-alert"

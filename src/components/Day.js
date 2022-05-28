@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 export default function Day({day, number, habitDays, setHabitDays}){
     const [click, setClick] = useState(false);
+
+    function isChosen(){
+        if(habitDays.includes(number)){
+            setClick(true);
+        }
+    }
+
+    useEffect(isChosen, []);
 
     function selectDay(){
         if(click === false){

@@ -7,9 +7,9 @@ import UserContext from "../contexts/UserContext";
 
 export default function Habits(){
     const API = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
-    const {user, habits, setHabits} = useContext(UserContext)
-    const token = user.token
-    const config = {headers: {Authorization: `Bearer ${token}`}}
+    const {user, habits, setHabits} = useContext(UserContext);
+    const token = user.token;
+    const config = {headers: {Authorization: `Bearer ${token}`}};
     useEffect(() => {
         const promise = axios.get(API, config);
         promise.then((response) => {setHabits(response.data)});
@@ -32,16 +32,29 @@ export default function Habits(){
 
     const [habitName, setHabitName] = useState("");
     const [habitDays, setHabitDays] = useState([]);
-    function save(){
-        const body = {name: habitName, days: habitDays}
-        const config = {headers: {Authorization: `Bearer ${token}`}}
-        const promise = axios.post(API, body, config);
-        promise.then(setHabitName(""));
-        promise.catch((error) => {alert(error.response.data.message)});
-        setNewHabit(false);
+    function saveHabit(){
+        if(habitDays.length > 0){
+            const body = {name: habitName, days: habitDays}
+            const config = {headers: {Authorization: `Bearer ${token}`}}
+            const promise = axios.post(API, body, config);
+            promise.then((response) => {
+                const newList = [...habits, response.data];
+                setHabits(newList);
+                setHabitName("");
+                setHabitDays([]);
+                setNewHabit(false);
+            });
+            promise.catch((error) => {
+                alert(error.response.data.message);
+                setNewHabit(true);
+            });
+        } else {
+            alert("Selecione pelo menos um dia para seu hábito.")
+        }
+        
     }
 
-    function cancel(){
+    function cancelHabit(){
         setNewHabit(false);
     }
 
@@ -65,8 +78,8 @@ export default function Habits(){
                                                                    setHabitDays={setHabitDays}/>)}
                             </div>
                             <div id="options">
-                                <p id="cancel" onClick={cancel}>Cancelar</p>
-                                <p id="save" onClick={save}>Salvar</p>
+                                <p id="cancel" onClick={cancelHabit}>Cancelar</p>
+                                <p id="save" onClick={saveHabit}>Salvar</p>
                             </div>
                         </div>
                         : ""}
@@ -77,6 +90,7 @@ export default function Habits(){
                                     </p> 
                                     : habits.map(
                                         (habit, index) => <Habit key={index}
+                                                                 id={habit.id}
                                                                  name={habit.name}
                                                                  days={habit.days}
                                                                  weekdays={weekDays}/>
@@ -88,7 +102,7 @@ export default function Habits(){
 const Container = styled.div`
     width: 375px;
     height: 77%;
-    padding: 0px 18px 0px 18px;
+    padding: 0px 18px 50px 18px;
     background-color: #F2F2F2;
     display: flex;
     flex-direction: column;
@@ -97,6 +111,11 @@ const Container = styled.div`
     font-family: 'Lexend Deca';
     font-style: normal;
     font-weight: 400;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     > p {
         font-size: 23px;
