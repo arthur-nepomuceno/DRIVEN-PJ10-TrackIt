@@ -1,7 +1,7 @@
 28/05/22 - Sábado
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-INÍCIO: 17:49
+INÍCIO - 17:49
 
 PROGRESSO:
 Consigo salvar hábitos do usuário
@@ -42,7 +42,7 @@ QQQ
 
 07. Não devo ser capaz de criar hábitos com dias vazios. -OK
 
-08. Deletar um hábito.
+08. Deletar um hábito. -OK
     IDEIA:
     - cada hábito tem um "id"
     - quando eu clicar no hábito, posso passar o "id" dele como parâmetro
@@ -55,6 +55,14 @@ QQQ
     - importar o useContext -ok 
     - importar o UserContext -ok 
     - usar o useContext para pegar a lista de hábitos e a função que atualiza a lista -ok
-    
-    - Dar o display do confirm para confirma deleção
-        - instalar a lib "react-confirm-alert"
+    - dar o display do confirm para confirma deleção -ok
+    - se sim, enviar o pedido de deleção para a API -ok 
+
+PAUSA AQUI - 19:53
+TOTAL - 2:04
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO - 
+
+QQQ
+09. Implementar layout de "carregando" ao salvar um hábito.

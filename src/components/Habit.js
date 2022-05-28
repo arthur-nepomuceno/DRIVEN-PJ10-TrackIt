@@ -1,18 +1,25 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
+import axios from "axios";
 
 export default function Habit({id, name, weekdays, days}){
-    const {habits, setHabits} = useContext(UserContext);
+    const {user, habits, setHabits} = useContext(UserContext);
+    const token = user.token;
+    const API = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/`
 
     function deleteHabit(){
-        if(confirm(`Deseja realmente apagar este hábito? ${name}`) === true){
-            const newList = habits.filter(habit => habit.id != id);
-            setHabits(newList);
+        if(window.confirm(`Deseja realmente apagar este hábito? "${name}"`) === true){
+            const config = {headers: {Authorization: `Bearer ${token}`}}
+            const promise = axios.delete(`${API + id}`, config)
+            promise.then(() => {
+                const newList = habits.filter(habit => habit.id != id);
+                setHabits(newList);
+            });
+            promise.catch((error) => {alert(error.respose.data)});
         }
     };
-
-    const list = [1, 3, 6];
+    
     return(
         <Container>
             <p>
