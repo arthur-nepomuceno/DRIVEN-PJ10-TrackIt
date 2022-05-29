@@ -9,7 +9,7 @@ export default function Top(){
     return(
         <Container>
             <img src={trackit} alt="trackit"/>
-            <img src={"https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg"} alt="profile"/>
+            <img src={user.image} alt="profile"/>
         </Container>
     );
 }

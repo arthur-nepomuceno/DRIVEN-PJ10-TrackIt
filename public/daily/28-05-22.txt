@@ -1,0 +1,108 @@
+28/05/22 - Sábado
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INÍCIO - 17:49
+
+PROGRESSO:
+Consigo salvar hábitos do usuário
+Consigo mostrar esses hábitos na tela
+
+PROBLEMA:
+Fazer os hábitos recarregarem automaticamente depois de salvar
+Se cancelar, também persistir os dados dos dias escolhidos
+
+QQQ
+05. Atualizar a variável com a lista de hábitos depois de salvar -OK
+    -quando eu salvo um hábito, a API me retorna um objeto que contem
+    as informações sobre o hábito salvo
+    -basta atualizar a lista de hábitos com essa informação caso a resposta
+    da API seja positiva
+
+06. Ao cancelar um hábito, persistir os dias escolhidos. -OK
+    Por que eles estão sumindo agora?
+    Porque a renderização dos dias da semana na opção de adicionar acontece
+    a cada vez que o botão de adicionar é clicado e, por definição, eles
+    são sempre carregados todos desselecionados.
+
+    Então o que eu preciso é salvar essas informações em algum lugar e só limpar
+    a lista se o botão de "salvar" for clicado.
+
+    Até agora as informações dos dias selecionados já são salvas dentro de 
+    "habitsDays".
+
+    IDEIA:
+    Ao carregar cada Day.js na renderização, verificar se esse dia já faz parte
+    da lista de dias selecionados. Se sim, passar a variável "click" para "true",
+    fazendo com que o dia em questão assuma as propriedades de um dia selecionado.
+
+    Se vou mudar uma variável de estado durante a renderização do componente, vou
+    precisar do useEffect. Por que? Porque quando uma variável de estado é alterada
+    na renderização do componente, isso invoca a renderização do componente de novo.
+    Sem o useEffect eu criaria um loopig infinito que travari o código.
+
+07. Não devo ser capaz de criar hábitos com dias vazios. -OK
+
+08. Deletar um hábito. -OK
+    IDEIA:
+    - cada hábito tem um "id"
+    - quando eu clicar no hábito, posso passar o "id" dele como parâmetro
+    - minha função de deletar então vai pegar esse id e usar ele para
+    atualizar a lista de hábitos
+    - a sacada é filtrar a lista, deixando passar apenas os id's que forem
+    diferentes do id que eu quero apagar.
+
+    PLANO:
+    - importar o useContext -ok 
+    - importar o UserContext -ok 
+    - usar o useContext para pegar a lista de hábitos e a função que atualiza a lista -ok
+    - dar o display do confirm para confirma deleção -ok
+    - se sim, enviar o pedido de deleção para a API -ok 
+
+PAUSA AQUI - 19:53
+TOTAL - 2:04
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO - 23:49
+
+QQQ
+09. Implementar layout de "carregando" ao salvar um hábito. OK
+    -importar o loader do react-loader-spinner -ok
+    -estabelecer a variável de controle -ok
+    -condicionar o aparecimento do loader ao estado da variável de controle -ok
+        -se false, o botão de salvar aparece -ok
+        -se true, o botão de salvar some e o loader aparece -ok
+        -ao clicar no botão de salvar, o estado da variável muda para true -ok
+        -ao final da requisição para a API, ele volta para false -ok
+
+FIM DA TELA DE HÁBITO
+PAUSA AQUI - 00:15
+TOTAL - 00:26
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL DA TELA DE HÁBITOS - 8:56
+(ONTEM - 6:26) + (HOJE - 2:30)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO - 00:39
+
+QQQ - INÍCIO DA TELA "HOJE"
+01. Criar layout básico. OK
+02. Carregar hábitos do usuário
+    -importar useEffect -ok
+    -importar useContext -ok
+    -importar UserContext -ok
+    -pegar o link da API -ok
+    -pegar o token do usuário -ok
+    -montar a config com o token -ok
+    -enviar requisição para API -ok
+
+    PROBLEMA: a requisição retorna uma lista vazia 
+    mesmo com hábitos já registrados.
+    
+FIM DO DIA
+PAUSA AQUI - 01:44
+TOTAL - 1:05
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL DO DIA - 3:35
+
+

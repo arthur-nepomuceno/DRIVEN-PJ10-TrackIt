@@ -32,7 +32,7 @@ export default function Login(){
                 setNowLoading(false);
             });
             }
-    }
+    };
     useEffect(() => {AutoLogin(data)}, []);    
 
     function Send(event){

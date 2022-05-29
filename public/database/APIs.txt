@@ -56,7 +56,7 @@ RECIEVE:
 GET - LISTAR HÁBITOS
 Link: https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits
 
-SEND: a "header" object with the TOKEN.
+SEND: a "headers" object with the TOKEN.
 
 RECIEVE:
 
@@ -79,3 +79,21 @@ Link: https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HA
 
 com um cabeçalho Authorization com formato Bearer TOKEN, 
 subtituindo ID_DO_HABITO na URL pelo id do hábito a ser deletado.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GET - BUSCAR HÁBITOS
+Link: https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today
+
+SEND: a "headers" object with the TOKEN.
+
+REVIECE:
+
+[
+    {
+        "id": 3,
+        "name": "Acordar",
+        "done": true,
+        "currentSequence": 1,
+        "highestSequence": 1
+    }
+]
