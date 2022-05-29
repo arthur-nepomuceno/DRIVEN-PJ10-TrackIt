@@ -62,7 +62,47 @@ PAUSA AQUI - 19:53
 TOTAL - 2:04
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-RETORNO - 
+RETORNO - 23:49
 
 QQQ
-09. Implementar layout de "carregando" ao salvar um hábito.
+09. Implementar layout de "carregando" ao salvar um hábito. OK
+    -importar o loader do react-loader-spinner -ok
+    -estabelecer a variável de controle -ok
+    -condicionar o aparecimento do loader ao estado da variável de controle -ok
+        -se false, o botão de salvar aparece -ok
+        -se true, o botão de salvar some e o loader aparece -ok
+        -ao clicar no botão de salvar, o estado da variável muda para true -ok
+        -ao final da requisição para a API, ele volta para false -ok
+
+FIM DA TELA DE HÁBITO
+PAUSA AQUI - 00:15
+TOTAL - 00:26
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL DA TELA DE HÁBITOS - 8:56
+(ONTEM - 6:26) + (HOJE - 2:30)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETORNO - 00:39
+
+QQQ - INÍCIO DA TELA "HOJE"
+01. Criar layout básico. OK
+02. Carregar hábitos do usuário
+    -importar useEffect -ok
+    -importar useContext -ok
+    -importar UserContext -ok
+    -pegar o link da API -ok
+    -pegar o token do usuário -ok
+    -montar a config com o token -ok
+    -enviar requisição para API -ok
+
+    PROBLEMA: a requisição retorna uma lista vazia 
+    mesmo com hábitos já registrados.
+    
+FIM DO DIA
+PAUSA AQUI - 01:44
+TOTAL - 1:05
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL DO DIA - 3:35
+
+

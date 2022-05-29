@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
+import {ThreeDots} from "react-loader-spinner";
 import Day from "./Day";
 import Habit from "./Habit";
 import UserContext from "../contexts/UserContext";
@@ -18,6 +19,9 @@ export default function Habits(){
     }, []);
 
     const [newHabit, setNewHabit] = useState(false);
+    const [habitName, setHabitName] = useState("");
+    const [habitDays, setHabitDays] = useState([]);
+    const [nowLoading, setNowLoading] = useState(false);
     const weekDays = [{day: `D`, number: 0},
                       {day: `S`, number: 1},
                       {day: `T`, number: 2},
@@ -28,11 +32,10 @@ export default function Habits(){
 
     function addHabit(){
         setNewHabit(true);
-    }
+    };
 
-    const [habitName, setHabitName] = useState("");
-    const [habitDays, setHabitDays] = useState([]);
     function saveHabit(){
+        setNowLoading(true);
         if(habitDays.length > 0){
             const body = {name: habitName, days: habitDays}
             const config = {headers: {Authorization: `Bearer ${token}`}}
@@ -43,23 +46,25 @@ export default function Habits(){
                 setHabitName("");
                 setHabitDays([]);
                 setNewHabit(false);
+                setNowLoading(false);
             });
             promise.catch((error) => {
                 alert(error.response.data.message);
                 setNewHabit(true);
+                setNowLoading(false);
             });
         } else {
-            alert("Selecione pelo menos um dia para seu hábito.")
-        }
-        
-    }
+            alert("Selecione pelo menos um dia para seu hábito.");
+            setNowLoading(false);
+        }        
+    };
 
     function cancelHabit(){
         setNewHabit(false);
-    }
+    };
 
     return(
-        <Container>
+        <Container background={nowLoading ? `#F2F2F2` : `#FFFFF`} color={nowLoading ? `#B3B3B3` : `#666666`}>
             <p id="title">Meus hábitos</p>
             <div id="new-habit" onClick={addHabit}>+</div> 
             {newHabit?
@@ -79,7 +84,8 @@ export default function Habits(){
                             </div>
                             <div id="options">
                                 <p id="cancel" onClick={cancelHabit}>Cancelar</p>
-                                <p id="save" onClick={saveHabit}>Salvar</p>
+                                {nowLoading ? <div><ThreeDots color="#FFFFFF" height={50} width={50} /></div>
+                                            : <p id="save" onClick={saveHabit}>Salvar</p>}
                             </div>
                         </div>
                         : ""}
@@ -161,12 +167,13 @@ const Container = styled.div`
     div#add-habit input {
         width: 303px;
         height: 45px;
-        background: #FFFFFF;
         border: 1px solid #D5D5D5;
         border-radius: 5px;
         padding: 10px;
         font-size: 20px;
         outline: none;
+        background: ${props => props.background};
+        color: ${props => props.color}
     }
 
     input::placeholder {
@@ -185,6 +192,16 @@ const Container = styled.div`
         margin-top: 30px;
         justify-content: end;
         align-items: center;
+    }
+
+    div#options div {
+        width: 84px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #52B6FF;
+        border-radius: 5px;
     }
 
     p#cancel {
@@ -214,5 +231,4 @@ const Container = styled.div`
             cursor: pointer;
         }
     }
-
 `
