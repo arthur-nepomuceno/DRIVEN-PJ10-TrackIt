@@ -28,15 +28,13 @@ QQQ
     - desse ponto em diante, "element" e "setElement" passam a estar acessíveis
     dentro do componente como se tivessem sido declarados ali mesmo
 
-    ADEUS props drilling!
-
 PAUSA AQUI: 12:19
 TOTAL: 2:06
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 RETORNO: 14:20
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-QQQ 
+QQQ - INÍCIO DAS TELAS DE LOGIN E CADASTRO
 01. Layout cru da tela de login e da tela de cadastro -OK
     -criar componentes: Login.js e SignUp.js -ok
     -importar em App.js -ok

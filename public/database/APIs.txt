@@ -97,3 +97,15 @@ REVIECE:
         "highestSequence": 1
     }
 ]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+POST - MARCAR HÁBITO COMO FEITO
+Link: https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO/check
+
+Send: SEND: a "headers" object with the TOKEN.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+POST - MARCAR HÁBITO COMO DESFEITO
+Link: https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO/uncheck
+
+Send: SEND: a "headers" object with the TOKEN.

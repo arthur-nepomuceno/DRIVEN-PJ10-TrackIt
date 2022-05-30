@@ -13,7 +13,7 @@ export default function Habit({id, name, weekdays, days}){
             const config = {headers: {Authorization: `Bearer ${token}`}}
             const promise = axios.delete(`${API + id}`, config)
             promise.then(() => {
-                const newList = habits.filter(habit => habit.id != id);
+                const newList = habits.filter(habit => habit.id !== id);
                 setHabits(newList);
             });
             promise.catch((error) => {alert(error.respose.data)});
