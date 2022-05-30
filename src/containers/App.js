@@ -14,14 +14,17 @@ import UserContext from "../contexts/UserContext";
 
 export default function App(){
     const [user, setUser] = useState(null);
-    const [progress, setProgress] = useState(70);
+    const [progress, setProgress] = useState(0);
     const [habits, setHabits] = useState([]);
+    const [todayHabits, setTodayHabits] = useState([]);
     const contextData = {user, 
                          setUser, 
                          progress, 
                          setProgress, 
                          habits, 
-                         setHabits};
+                         setHabits,
+                         todayHabits,
+                         setTodayHabits};
 
     return(
         <BrowserRouter>

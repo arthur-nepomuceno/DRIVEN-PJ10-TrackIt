@@ -4,34 +4,45 @@ import UserContext from "../contexts/UserContext";
 import TodayHabit from "./TodayHabit";
 import axios from "axios";
 import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import "dayjs/locale/pt-br";
 
 export default function Today(){
+    dayjs.extend(advancedFormat);
+    dayjs.locale("pt-br");
+    const date = dayjs().format(`dddd, DD/MM`).replace("-feira", "");
+    const Date = date[0].toUpperCase() + date.slice(1);
+    const {user, todayHabits, setTodayHabits, progress, setProgress} = useContext(UserContext);
+    const [count, setCount] = useState(null);
+
     const API = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
-    const {user, habits} = useContext(UserContext);
     const token = user.token;
-    const config = {headers: {Authorization: `Bearer ${token}`}}
-    const [todayHabits, setTodayHabits] = useState([]);
+    const config = {headers: {Authorization: `Bearer ${token}`}}    
     useEffect(() => {
         const promise = axios.get(API, config);
         promise.then((response) => {
-            console.log(response);
-            const data = [...todayHabits, response.data];
-            setTodayHabits(data);
+            setTodayHabits(response.data);
+            const doneHabits = response.data.filter(habit => habit.done === true);
+            const totalCount = response.data.length;
+            const initialCount = doneHabits.length;
+            const initialProgress = Math.round((initialCount / totalCount) * 100);
+            setProgress(initialProgress);
+            setCount(initialCount);
         });
         promise.catch((error) => {alert(error.response.data.message)});
-    }, []);
-
-
-    const [percent, setPercent] = useState(0);
-    const [count, setCount] = useState(0);
+    }, []);    
+    
     return(
         <Container>
-            <p>Domingo, 29/05</p>
-            {percent > 0 ? <p style={{color: "#8FC549"}}>{percent}% dos hábitos concluídos</p> 
+            <p>{Date}</p>
+            {progress > 0 ? <p style={{color: "#8FC549"}}>{progress}% dos hábitos concluídos</p> 
                          : <p>Nenhum hábito concluído ainda</p>}
-            {habits.map((habit, index) => <TodayHabit key={index}
+            {todayHabits.map((habit, index) => <TodayHabit key={index}
+                                                      id={habit.id}
                                                       name={habit.name}
-                                                      setPercent={setPercent}
+                                                      done={habit.done}
+                                                      currentSequence={habit.currentSequence}
+                                                      highestSequence={habit.highestSequence}
                                                       count={count}
                                                       setCount={setCount}/>)}
         </Container>

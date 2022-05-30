@@ -41,8 +41,7 @@ export default function Habits(){
             const config = {headers: {Authorization: `Bearer ${token}`}}
             const promise = axios.post(API, body, config);
             promise.then((response) => {
-                const newList = [...habits, response.data];
-                setHabits(newList);
+                setHabits([...habits, response.data]);
                 setHabitName("");
                 setHabitDays([]);
                 setNewHabit(false);

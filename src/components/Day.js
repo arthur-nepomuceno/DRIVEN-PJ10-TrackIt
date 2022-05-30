@@ -20,7 +20,7 @@ export default function Day({day, number, habitDays, setHabitDays}){
         }
         if(click === true){
             setClick(false);
-            const chosenDays = habitDays.filter(d => d != number);
+            const chosenDays = habitDays.filter(d => d !== number);
             setHabitDays(chosenDays);
         }        
     }

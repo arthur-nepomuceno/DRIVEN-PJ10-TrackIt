@@ -10,7 +10,12 @@ PLANO: possibilidade de que o servidor tenha caído, então esperar resolverem e
 
 QQQ
 03. Finalizar o layout estaticamente. -OK
-04. Inserir porcentagem como subtítulo
+04. Inserir porcentagem como subtítulo -OK
        -preciso saber o número total de hábitos, que é o comprimento da lista
        -para cada vez que eu concluir um hábito, preciso somar um contador
        -a porcentagem será sempre igual ao contador dividido pelo total de hábitos * 100
+
+PAUSA AQUI - 10:10
+TOTAL - 1:29
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
